@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddTask from "../pages/AddTask";
 import ManageTask from "../pages/ManageTask";
 import Checkout from "../pages/Checkout";
-import Sidebar from "../layouts/Sidebar";
+import DetailTask from "../pages/DetailTask";
+import NotFound from "../pages/NotFound";
+import { Sidebar } from "../components";
 
 const AppRoutes = ({ tasks, addTask, deleteTask, editTask }) => {
   // Fungsi untuk handle pembayaran: set pembayaran jadi 0 dan status jadi Lunas
@@ -36,6 +38,8 @@ const AppRoutes = ({ tasks, addTask, deleteTask, editTask }) => {
               path="/checkout"
               element={<Checkout tasks={tasks} onPay={handlePay} />}
             />
+            <Route path="/detail/:id" element={<DetailTask tasks={tasks} />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </div>

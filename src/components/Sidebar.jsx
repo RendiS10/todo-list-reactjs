@@ -1,9 +1,8 @@
+// Sidebar UI component
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Sidebar.css";
-
-// Komponen Sidebar sudah dipindahkan ke components/Sidebar.jsx
+import "../layouts/Sidebar.css";
 
 export default function Sidebar() {
   return (
@@ -15,6 +14,9 @@ export default function Sidebar() {
       <Nav className="flex-column">
         <Nav.Link as={Link} to="/" className="text-white">
           Add Task
+        </Nav.Link>
+        <Nav.Link as={Link} to="/tasks" className="text-white">
+          Task List
         </Nav.Link>
         <Nav.Link as={Link} to="/manage" className="text-white">
           Manage Task
