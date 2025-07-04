@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddTask from "../pages/AddTask";
 import ManageTask from "../pages/ManageTask";
 import Checkout from "../pages/Checkout";
-import Navbar from "../layouts/Navbar";
+import Sidebar from "../layouts/Sidebar";
 
 const AppRoutes = ({ tasks, addTask, deleteTask, editTask }) => {
   // Fungsi untuk handle pembayaran: set pembayaran jadi 0 dan status jadi Lunas
@@ -17,24 +17,28 @@ const AppRoutes = ({ tasks, addTask, deleteTask, editTask }) => {
   };
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<AddTask addTask={addTask} />} />
-        <Route
-          path="/manage"
-          element={
-            <ManageTask
-              tasks={tasks}
-              deleteTask={deleteTask}
-              editTask={editTask}
+      <div style={{ display: "flex" }}>
+        <Sidebar />
+        <div style={{ marginLeft: 220, flex: 1, width: "100%" }}>
+          <Routes>
+            <Route path="/" element={<AddTask addTask={addTask} />} />
+            <Route
+              path="/manage"
+              element={
+                <ManageTask
+                  tasks={tasks}
+                  deleteTask={deleteTask}
+                  editTask={editTask}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/checkout"
-          element={<Checkout tasks={tasks} onPay={handlePay} />}
-        />
-      </Routes>
+            <Route
+              path="/checkout"
+              element={<Checkout tasks={tasks} onPay={handlePay} />}
+            />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 };
